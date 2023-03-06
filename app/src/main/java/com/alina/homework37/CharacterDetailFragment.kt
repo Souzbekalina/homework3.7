@@ -10,6 +10,7 @@ import com.alina.homework37.databinding.FragmentCharacterDetailBinding
 
 class CharacterDetailFragment : Fragment() {
     private lateinit var binding: FragmentCharacterDetailBinding
+    private lateinit var navArg:CharacterDetailFragmentArgs
 
 
     override fun onCreateView(
@@ -22,10 +23,14 @@ class CharacterDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val  character=arguments?.getSerializable(CharacterFragment.CHARACTER)!! as Character
+
+        arguments?.let {
+                 navArg=CharacterDetailFragmentArgs.fromBundle(it)
+        }
+
         binding.apply {
-            tvDetailnameCartoon.text=character.nameOfCartoon
-            tvDetailnameCharacter.text=character.nameOfCharacter
+          tvDetailnameCartoon.text=navArg.character
+        tvDetailnameCharacter.text=navArg.character
 
         }
     }

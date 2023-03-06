@@ -37,7 +37,7 @@ class CharacterFragment : Fragment() {
         list.add(Character("Ichigo Kurasaki","Bleach","https://pbs.twimg.com/media/FXpxSGwUcAAQUKK?format=jpg&name=large"))
         list.add(Character("Isida Uri","Bleach","https://i.pinimg.com/originals/2d/47/56/2d47566b7b2e4d872cc4577155fa8be1.jpg"))
         list.add(Character("Inoue Orihime","Bleach","https://i.pinimg.com/originals/1e/f8/e7/1ef8e790f3ce91cb7ee612d2f072ee8f.jpg"))
-        list.add(Character("kuchiki byakuya","Bleach","https://avatars.mds.yandex.net/i?id=e075cc97675bc0da303855894669f656853483d9-7013580-images-thumbs&n=13"))
+        list.add(Character("Kuchiki Byakuya","Bleach","https://avatars.mds.yandex.net/i?id=e075cc97675bc0da303855894669f656853483d9-7013580-images-thumbs&n=13"))
 
         adapter= CharacterAdapter(list,this::onClick)
         binding.rvCharacter.adapter=adapter
@@ -45,9 +45,8 @@ class CharacterFragment : Fragment() {
     }
     private fun onClick(position:Int) {
         var ch=com.alina.homework37.Character(list[position].nameOfCharacter, list[position].nameOfCartoon,list[position].pictureOfCharacter)
-        findNavController().navigate(R.id.characterDetailFragment, bundleOf(CHARACTER to  ch)
+        findNavController().navigate(CharacterFragmentDirections.actionCharacterFragmentToCharacterDetailFragment(ch))
 
-        )
 
     }
 
